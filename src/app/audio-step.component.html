@@ -1,0 +1,11 @@
+<div class="container">
+    <tag-audio></tag-audio>
+    <div class="row">        
+        <div class="displayMsg" >{{subtitleMsg}}</div>
+        <input class="btn-success btn-sm" type="button" (click)="repeat()" value="Repeat" />
+        <label for="time"> Latency between audio and subtitle ({{ time.value }})
+            <input type="range" #time (input)="latency = time.value" [value]="latency" id="time" min="1" max="10" step="1">
+        </label>
+    </div>
+</div>
+

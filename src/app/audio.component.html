@@ -1,0 +1,34 @@
+<audio #audioOption>
+  <source src='assets/{{resource}}.mp3' name="audio" type="audio/mp3" controls="true">
+</audio>
+
+<h4>Velocidad {{velocityMsg}}</h4>
+<input [disabled]="buttonStatus" type="range" min="0" max="1.5" step="0.25" #ranger [value]="myValue" (input)="changeVelocity(ranger.value)">
+
+<h4>Latencia {{latencyMsg}}</h4>
+<input [disabled]="buttonStatus" type="range" min="1" max="5" step="1" #rangerL [value]="myLatency" (input)="changeLatency(rangerL.value)">
+
+<h4>Progreess</h4>
+<input [disabled]="buttonStatus" type="range" min="0" max="100" step="1" [value]="progressAud">
+
+
+{{currentTime}} 
+<h1>{{msgCurrent}}</h1>
+
+
+
+<button (click)="onAudioPlay()"> Reproducir</button>
+<button (click)="onPause()"> Pause</button>
+
+<div>
+  <button (click)="prev()" [disabled]="buttonStatus">Atras</button>
+  <button (click)="repeat()" [disabled]="buttonStatus">Repeat</button>
+  <button (click)="next()" [disabled]="buttonStatus">Siguiente</button>
+</div>
+
+<ul>
+  <li *ngFor="let item of subtitles; let i = index; first as isFirst" (click)="action(i)">
+    {{i}} {{item.second}} - {{item.value}}<span *ngIf="isFirst"> - default</span>
+  </li>  
+</ul>
+<router-outlet></router-outlet>
